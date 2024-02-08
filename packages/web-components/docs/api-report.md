@@ -1986,8 +1986,10 @@ export const RadioStyles: ElementStyles;
 // @public (undocumented)
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
+// Warning: (ae-forgotten-export) The symbol "ThemeDefinition" needs to be exported by the entry point index.d.ts
+//
 // @public
-export const setTheme: (theme: Theme) => void;
+export const setTheme: (themeDefinition: ThemeDefinition) => void;
 
 // @public (undocumented)
 export const setThemeFor: (element: HTMLElement, theme: Theme) => void;

@@ -27,6 +27,16 @@ export const styles = css`
     border-radius: var(${borderRadiusSmall});
   }
 
+  :host([color='warning']) {
+    --badge-background: red;
+    --badge-foreground: white;
+  }
+
+  :host([color='test']) {
+    --badge-background: blue;
+    --badge-foreground: white;
+  }
+
   ${badgeSizeStyles}
   ${badgeFilledStyles}
   ${badgeGhostStyles}

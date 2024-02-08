@@ -1,7 +1,9 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation/utilities.js';
 import {
+  borderRadiusCircular,
   borderRadiusMedium,
+  colorCompoundBrandForeground1,
   colorCompoundBrandForeground1Hover,
   colorCompoundBrandForeground1Pressed,
   colorNeutralBackground1,
@@ -21,6 +23,46 @@ import {
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
+import {
+  colorControlForegroundTextOnPlatePrimaryDisabled,
+  colorControlForegroundTextOnPlatePrimaryHover,
+  colorControlForegroundTextOnPlatePrimaryPressed,
+  colorControlForegroundTextOnPlatePrimaryRest,
+  colorControlListItemDefaultFillDisabled,
+  colorControlListItemDefaultFillHover,
+  colorControlListItemDefaultFillPressed,
+  colorControlListItemDefaultFillRest,
+  colorControlListItemDefaultIconHover,
+  colorControlListItemDefaultIconPressed,
+  colorControlListItemDefaultIconRest,
+  colorControlListItemDefaultSwitchBackgroundFillHover,
+  colorControlListItemDefaultSwitchBackgroundFillPressed,
+  colorControlListItemDefaultSwitchBackgroundStrokeHover,
+  colorControlListItemDefaultSwitchBackgroundStrokePressed,
+  colorControlListItemDefaultSwitchForegroundFillPressed,
+  colorControlListItemSelectedDefaultSwitchBackgroundFillHover,
+  colorControlListItemSelectedDefaultSwitchBackgroundStrokeHover,
+  colorControlListItemSelectedDefaultSwitchForegroundFillHover,
+  colorControlListItemSelectedDefaultSwitchForegroundFillPressed,
+  colorControlListItemSelectedDefaultSwitchForegroundFillRest,
+  controlHeight,
+  layoutControlPaddingHorizontal,
+  layoutControlStrokeOutlineHover,
+  layoutControlStrokeOutlinePressed,
+  layoutControlSwitchSelectorSizeHover,
+  layoutControlSwitchSelectorSizePressed,
+  layoutControlSwitchSelectorSizeRest,
+  layoutControlTextMarginBottom,
+  layoutControlTextMarginTop,
+  layoutCornerControlDefaultDisabled,
+  layoutCornerControlDefaultHover,
+  layoutCornerControlDefaultPressed,
+  layoutCornerControlDefaultRest,
+  layoutCornerControlRadioHover,
+  layoutCornerControlRadioInnerHover,
+  layoutCornerControlSelectorRest,
+  menuIndicatorDisplay,
+} from '../theme/design-tokens-new.js';
 
 /** MenuItem styles
  * @public
@@ -32,19 +74,20 @@ export const styles = css`
     grid-template-columns: 20px 20px auto 20px;
     align-items: center;
     grid-gap: 4px;
-    height: 32px;
-    background: var(${colorNeutralBackground1});
+    min-height: var(${controlHeight}, 32px);
+    background: var(${colorControlListItemDefaultFillRest}, var(${colorNeutralBackground1}));
     font: var(${fontWeightRegular}) var(${fontSizeBase300}) / var(${lineHeightBase300}) var(${fontFamilyBase});
-    border-radius: var(${borderRadiusMedium});
-    color: var(${colorNeutralForeground2});
-    padding: 0 10px;
+    border-radius: var(${layoutCornerControlDefaultRest} var(${borderRadiusMedium}));
+    color: var(${colorControlForegroundTextOnPlatePrimaryRest}, var(${colorNeutralForeground2}));
+    padding: 0 var(${layoutControlPaddingHorizontal}, 10px);
     cursor: pointer;
     overflow: visible;
     contain: layout;
   }
 
   :host(:hover) {
-    background: var(${colorNeutralBackground1Hover});
+    background: var(${colorControlListItemDefaultFillHover}, var(${colorNeutralBackground1Hover}));
+    border-radius: var(${layoutCornerControlDefaultHover}, var(${borderRadiusMedium}));
   }
 
   .content {
@@ -52,11 +95,26 @@ export const styles = css`
     flex-grow: 1;
     grid-column: auto / span 2;
     padding: 0 2px;
+    margin-top: var(${layoutControlTextMarginTop}, 0);
+    margin-bottom: var(${layoutControlTextMarginBottom}, 0);
   }
 
   .checkbox,
   .radio {
     display: none;
+  }
+
+  :host(:active) .checkbox,
+  :host(:active) .radio {
+    display: var(${menuIndicatorDisplay}, none);
+  }
+
+  :host(:active) .checkbox {
+    color: var(${colorControlListItemDefaultSwitchForegroundFillPressed});
+  }
+
+  :host(:active) .radio {
+    background: var(${colorControlListItemDefaultSwitchForegroundFillPressed});
   }
 
   .input-container,
@@ -68,7 +126,28 @@ export const styles = css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    color: var(${colorNeutralForeground2});
+    color: var(${colorControlForegroundTextOnPlatePrimaryRest}, var(${colorNeutralForeground2}));
+  }
+
+  .radio {
+    height: var(${layoutControlSwitchSelectorSizeRest}, 10px);
+    width: var(${layoutControlSwitchSelectorSizeRest}, 10px);
+    border-radius: var(${layoutCornerControlSelectorRest}, var(${borderRadiusCircular}));
+  }
+
+  :host(:hover) .radio {
+    height: var(${layoutControlSwitchSelectorSizeHover}, 10px);
+    width: var(${layoutControlSwitchSelectorSizeHover}, 10px);
+    border-radius: var(${layoutCornerControlRadioInnerHover}, var(${borderRadiusCircular}));
+  }
+
+  :host(:active) .radio {
+    height: var(${layoutControlSwitchSelectorSizePressed}, 10px);
+    width: var(${layoutControlSwitchSelectorSizePressed}, 10px);
+  }
+
+  ::slotted([slot='start']) {
+    color: var(${colorControlListItemDefaultIconRest}, var(${colorNeutralForeground2}));
   }
 
   .expand-collapse-glyph-container,
@@ -81,6 +160,84 @@ export const styles = css`
 
   .input-container {
     width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  :host(:hover) .input-container {
+    border-radius: var(${layoutCornerControlRadioHover}, 0px);
+    border: var(${layoutControlStrokeOutlineHover}, 0px) solid
+      var(${colorControlListItemDefaultSwitchBackgroundStrokeHover}, transparent);
+    background: var(${colorControlListItemDefaultSwitchBackgroundFillHover}, transparent);
+  }
+
+  :host(:active) .input-container {
+    border: var(${layoutControlStrokeOutlinePressed}, 0px) solid
+      var(${colorControlListItemDefaultSwitchBackgroundStrokePressed}, transparent);
+    background: var(${colorControlListItemDefaultSwitchBackgroundFillPressed}, transparent);
+  }
+
+  :host([checked]) .input-container {
+    border-radius: var(${layoutCornerControlRadioHover}, 0px);
+    border: var(${layoutControlStrokeOutlineHover}, 0px) solid
+      var(${colorControlListItemSelectedDefaultSwitchBackgroundStrokeHover}, transparent);
+    background: var(${colorControlListItemSelectedDefaultSwitchBackgroundFillHover}, transparent);
+  }
+
+  :host([checked]) .radio {
+    background: var(
+      ${colorControlListItemSelectedDefaultSwitchForegroundFillRest},
+      var(${colorCompoundBrandForeground1})
+    );
+  }
+
+  :host([checked]) .checkbox {
+    color: var(${colorControlListItemSelectedDefaultSwitchForegroundFillRest}, var(${colorCompoundBrandForeground1}));
+  }
+
+  :host([checked]:hover) .input-container {
+    border-radius: var(${layoutCornerControlRadioHover}, 0px);
+    border: var(${layoutControlStrokeOutlineHover}, 0px) solid
+      var(${colorControlListItemSelectedDefaultSwitchBackgroundStrokeHover}, transparent);
+    background: var(${colorControlListItemSelectedDefaultSwitchBackgroundFillHover}, transparent);
+  }
+
+  :host([checked]:hover) .radio {
+    background: var(
+      ${colorControlListItemSelectedDefaultSwitchForegroundFillHover},
+      var(${colorCompoundBrandForeground1Hover})
+    );
+  }
+
+  :host([checked]:hover) .checkbox {
+    color: var(
+      ${colorControlListItemSelectedDefaultSwitchForegroundFillHover},
+      var(${colorCompoundBrandForeground1Hover})
+    );
+  }
+
+  :host([checked]:active) .input-container {
+    border-radius: var(${layoutCornerControlRadioHover}, 0px);
+    border: var(${layoutControlStrokeOutlineHover}, 0px) solid
+      var(${colorControlListItemSelectedDefaultSwitchBackgroundStrokeHover}, transparent);
+    background: var(${colorControlListItemSelectedDefaultSwitchBackgroundFillHover}, transparent);
+  }
+
+  :host([checked]:active) .radio {
+    background: var(
+      ${colorControlListItemSelectedDefaultSwitchForegroundFillPressed},
+      var(${colorCompoundBrandForeground1Pressed})
+    );
+  }
+
+  :host([checked]:active) .checkbox {
+    color: var(
+      ${colorControlListItemSelectedDefaultSwitchForegroundFillPressed},
+      var(${colorCompoundBrandForeground1Pressed})
+    );
   }
 
   ::slotted([slot='end']) {
@@ -99,36 +256,38 @@ export const styles = css`
   :host(:hover) .input-container,
   :host(:hover) .expand-collapse-glyph-container,
   :host(:hover) .content {
-    color: var(${colorNeutralForeground2Hover});
+    color: var(${colorControlForegroundTextOnPlatePrimaryHover}, var(${colorNeutralForeground2Hover}));
   }
 
-  :host([icon]:hover) ::slotted([slot='start']) {
-    color: var(${colorCompoundBrandForeground1Hover});
+  :host(:hover) ::slotted([slot='start']) {
+    color: var(${colorControlListItemDefaultIconHover}, var(${colorCompoundBrandForeground1Hover}));
   }
 
   :host(:active) {
-    background-color: var(${colorNeutralBackground1Selected});
+    background-color: var(${colorControlListItemDefaultFillPressed}, var(${colorNeutralBackground1Selected}));
+    border-radius: var(${layoutCornerControlDefaultPressed}, var(${borderRadiusMedium}));
   }
 
   :host(:active) .input-container,
   :host(:active) .expand-collapse-glyph-container,
   :host(:active) .content {
-    color: var(${colorNeutralForeground2Pressed});
+    color: var(${colorControlForegroundTextOnPlatePrimaryPressed}, var(${colorNeutralForeground2Pressed}));
   }
 
   :host(:active) ::slotted([slot='start']) {
-    color: var(${colorCompoundBrandForeground1Pressed});
+    color: var(${colorControlListItemDefaultIconPressed}, var(${colorCompoundBrandForeground1Pressed}));
   }
 
   :host([disabled]) {
-    background-color: var(${colorNeutralBackgroundDisabled});
+    background-color: var(${colorControlListItemDefaultFillDisabled}, var(${colorNeutralBackgroundDisabled}));
+    border-radius: var(${layoutCornerControlDefaultDisabled}, var(${borderRadiusMedium}));
   }
 
   :host([disabled]) .content,
   :host([disabled]) .expand-collapse-glyph-container,
   :host([disabled]) ::slotted([slot='end']),
   :host([disabled]) ::slotted([slot='start']) {
-    color: var(${colorNeutralForegroundDisabled});
+    color: var(${colorControlForegroundTextOnPlatePrimaryDisabled}, var(${colorNeutralForegroundDisabled}));
   }
 
   :host([data-indent]) {

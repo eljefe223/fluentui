@@ -27,71 +27,87 @@ import {
   colorTransparentBackgroundSelected,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import {
+  colorControlButtonSelectedDefaultFillHover,
+  colorControlButtonSelectedDefaultFillPressed,
+  colorControlButtonSelectedDefaultFillRest,
+  colorControlButtonSelectedDefaultForegroundTextRest,
+  colorControlButtonSelectedDefaultStrokeHover,
+  colorControlButtonSelectedDefaultStrokePressed,
+  colorControlButtonSelectedDefaultStrokeRest,
+  colorControlButtonSelectedSubtleFillHover,
+  colorControlButtonSelectedSubtleFillPressed,
+  colorControlButtonSelectedSubtleFillRest,
+  colorControlButtonSubtleForegroundTextHover,
+  colorControlButtonSubtleForegroundTextPressed,
+  colorControlButtonSubtleForegroundTextRest,
+} from '../theme/design-tokens-new.js';
 
 // Need to support icon hover styles
 export const styles = css`
   ${ButtonStyles}
 
   :host([aria-pressed="true"]) .control {
-    border-color: var(${colorNeutralStroke1});
-    background-color: var(${colorNeutralBackground1Selected});
-    color: var(${colorNeutralForeground1});
+    border-color: var(${colorControlButtonSelectedDefaultStrokeRest}, var(${colorNeutralStroke1}));
+    background-color: var(${colorControlButtonSelectedDefaultFillRest}, var(${colorNeutralBackground1Selected}));
+    color: var(${colorControlButtonSelectedDefaultForegroundTextRest}, var(${colorNeutralForeground1}));
     border-width: var(${strokeWidthThin});
   }
 
   :host([aria-pressed='true']:hover) .control {
-    border-color: var(${colorNeutralStroke1Hover});
-    background-color: var(${colorNeutralBackground1Hover});
+    border-color: var(${colorControlButtonSelectedDefaultStrokeHover}, var(${colorNeutralStroke1Hover}));
+    background-color: var(${colorControlButtonSelectedDefaultFillHover}, var(${colorNeutralBackground1Hover}));
   }
 
   :host([aria-pressed='true']:active) .control {
-    border-color: var(${colorNeutralStroke1Pressed});
-    background-color: var(${colorNeutralBackground1Pressed});
+    border-color: var(${colorControlButtonSelectedDefaultStrokePressed}, var(${colorNeutralStroke1Pressed}));
+    background-color: var(${colorControlButtonSelectedDefaultFillPressed}, var(${colorNeutralBackground1Pressed}));
   }
 
   :host([aria-pressed='true'][appearance='primary']) .control {
     border-color: transparent;
-    background-color: var(${colorBrandBackgroundSelected});
-    color: var(${colorNeutralForegroundOnBrand});
+    background-color: var(${colorControlButtonSelectedDefaultFillRest}, var(${colorBrandBackgroundSelected}));
+    color: var(${colorControlButtonSelectedDefaultForegroundTextRest}, var(${colorNeutralForegroundOnBrand}));
   }
 
   :host([aria-pressed='true'][appearance='primary']:hover) .control {
-    background-color: var(${colorBrandBackgroundHover});
+    background-color: var(${colorControlButtonSelectedDefaultFillHover}, var(${colorBrandBackgroundHover}));
   }
 
   :host([aria-pressed='true'][appearance='primary']:active) .control {
-    background-color: var(${colorBrandBackgroundPressed});
+    background-color: var(${colorControlButtonSelectedDefaultFillPressed}, var(${colorBrandBackgroundPressed}));
   }
 
   :host([aria-pressed='true'][appearance='subtle']) .control {
     border-color: transparent;
-    background-color: var(${colorSubtleBackgroundSelected});
-    color: var(${colorNeutralForeground2Selected});
+    Color.Control.Button.Subtle.Foreground.Text.Rest
+    background-color: var(${colorControlButtonSelectedSubtleFillRest}, var(${colorSubtleBackgroundSelected}));
+    color: var(${colorControlButtonSubtleForegroundTextRest}, var(${colorNeutralForeground2Selected}));
   }
 
   :host([aria-pressed='true'][appearance='subtle']:hover) .control {
-    background-color: var(${colorSubtleBackgroundHover});
-    color: var(${colorNeutralForeground2Hover});
+    background-color: var(${colorControlButtonSelectedSubtleFillHover}, var(${colorSubtleBackgroundHover}));
+    color: var(${colorControlButtonSubtleForegroundTextHover}, var(${colorNeutralForeground2Hover}));
   }
 
   :host([aria-pressed='true'][appearance='subtle']:active) .control {
-    background-color: var(${colorSubtleBackgroundPressed});
-    color: var(${colorNeutralForeground2Pressed});
+    background-color: var(${colorControlButtonSelectedSubtleFillPressed}, var(${colorSubtleBackgroundPressed}));
+    color: var(${colorControlButtonSubtleForegroundTextPressed}, var(${colorNeutralForeground2Pressed}));
   }
 
   :host([aria-pressed='true'][appearance='outline']) .control,
   :host([aria-pressed='true'][appearance='transparent']) .control {
-    background-color: var(${colorTransparentBackgroundSelected});
+    background-color: var(${colorControlButtonSelectedSubtleFillRest}, var(${colorTransparentBackgroundSelected}));
   }
 
   :host([aria-pressed='true'][appearance='outline']:hover) .control,
   :host([aria-pressed='true'][appearance='transparent']:hover) .control {
-    background-color: var(${colorTransparentBackgroundHover});
+    background-color: var(${colorControlButtonSelectedSubtleFillHover}, var(${colorTransparentBackgroundHover}));
   }
 
   :host([aria-pressed='true'][appearance='outline']:active) .control,
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
-    background-color: var(${colorTransparentBackgroundPressed});
+    background-color: var(${colorControlButtonSelectedSubtleFillPressed}, var(${colorTransparentBackgroundPressed}));
   }
 
   :host([aria-pressed='true'][appearance='transparent']) .control {

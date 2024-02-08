@@ -17,13 +17,32 @@ import {
   colorStrokeFocus1,
   colorStrokeFocus2,
 } from '../theme/design-tokens.js';
+import {
+  colorControlSliderDefaultThumbOuterFillDisabled,
+  colorControlSliderDefaultThumbOuterFillHover,
+  colorControlSliderDefaultThumbOuterFillPressed,
+  colorControlSliderDefaultThumbOuterFillRest,
+  colorControlSliderDefaultTrackFillDisabled,
+  colorControlSliderDefaultTrackFillRest,
+  colorControlSliderDefaultTrackSelectedFillDisabled,
+  colorControlSliderDefaultTrackSelectedFillHover,
+  colorControlSliderDefaultTrackSelectedFillPressed,
+  colorControlSliderDefaultTrackSelectedFillRest,
+  layoutControlSliderThumbOuterFootprintRest,
+  layoutControlSliderThumbStrokeDisabled,
+  layoutControlSliderThumbStrokeHover,
+  layoutControlSliderThumbStrokePressed,
+  layoutControlSliderThumbStrokeRest,
+  layoutCornerControlSelectorRest,
+  sliderMask,
+} from '../theme/design-tokens-new.js';
 
 /** Text styles
  * @public
  */
 export const styles = css`
   ${display('inline-grid')} :host {
-    --thumb-size: 18px;
+    --thumb-size: var(${layoutControlSliderThumbOuterFootprintRest}, 18px);
     --thumb-padding: 3px;
     --thumb-translate: calc(var(--thumb-size) * -0.5 + var(--track-width) / 2);
     --track-overhang: -2px;
@@ -97,20 +116,29 @@ export const styles = css`
   .thumb-cursor {
     height: var(--thumb-size);
     width: var(--thumb-size);
-    background-color: var(${colorBrandBackground});
-    border-radius: var(${borderRadiusCircular});
-    box-shadow: inset 0 0 0 var(--thumb-padding) var(${colorNeutralBackground1}), 0 0 0 1px var(${colorNeutralStroke1});
+    background-color: var(${sliderMask}, var(${colorBrandBackground}));
+    border-radius: var(${layoutCornerControlSelectorRest}, var(${borderRadiusCircular}));
+    box-shadow: inset 0 0 0 var(${layoutControlSliderThumbStrokeRest}, var(--thumb-padding))
+        var(${colorControlSliderDefaultThumbOuterFillRest}, var(${colorNeutralBackground1})),
+      0 0 0 1px var(${sliderMask}, var(${colorNeutralStroke1}));
   }
   .thumb-cursor:hover {
-    background-color: var(${colorCompoundBrandBackgroundHover});
+    background-color: var(${sliderMask}, var(${colorCompoundBrandBackgroundHover}));
+    box-shadow: inset 0 0 0 var(${layoutControlSliderThumbStrokeHover}, var(--thumb-padding))
+        var(${colorControlSliderDefaultThumbOuterFillHover}, var(${colorNeutralBackground1})),
+      0 0 0 1px var(${sliderMask}, var(${colorNeutralStroke1}));
   }
   .thumb-cursor:active {
-    background-color: var(${colorCompoundBrandBackgroundPressed});
+    background-color: var(${sliderMask}, var(${colorCompoundBrandBackgroundPressed}));
+    box-shadow: inset 0 0 0 var(${layoutControlSliderThumbStrokePressed}, var(--thumb-padding))
+        var(${colorControlSliderDefaultThumbOuterFillPressed}, var(${colorNeutralBackground1})),
+      0 0 0 1px var(${sliderMask}, var(${colorNeutralStroke1}));
   }
   :host([disabled]) .thumb-cursor {
-    background-color: var(${colorNeutralForegroundDisabled});
-    box-shadow: inset 0 0 0 var(--thumb-padding) var(${colorNeutralBackground1}),
-      0 0 0 1px var(${colorNeutralStrokeDisabled});
+    background-color: var(${sliderMask}, var(${colorNeutralForegroundDisabled}));
+    box-shadow: inset 0 0 0 var(${layoutControlSliderThumbStrokeDisabled}, var(--thumb-padding))
+        var(${colorControlSliderDefaultThumbOuterFillDisabled}, var(${colorNeutralBackground1})),
+      0 0 0 1px var(${sliderMask}, var(${colorNeutralStrokeDisabled}));
   }
 
   /* Positioning Region */
@@ -133,8 +161,8 @@ export const styles = css`
   .track {
     align-self: start;
     position: absolute;
-    background-color: var(${colorNeutralStrokeAccessible});
-    border-radius: var(${borderRadiusMedium});
+    background-color: var(${colorControlSliderDefaultTrackFillRest}, var(${colorNeutralStrokeAccessible}));
+    border-radius: var(${layoutCornerControlSelectorRest}, var(${borderRadiusMedium}));
     overflow: hidden;
   }
 
@@ -158,7 +186,7 @@ export const styles = css`
   }
 
   :host([disabled]) .track {
-    background-color: var(${colorNeutralBackgroundDisabled});
+    background-color: var(${colorControlSliderDefaultTrackFillDisabled}, var(${colorNeutralBackgroundDisabled}));
   }
 
   :host([orientation='horizontal']) .track {
@@ -177,23 +205,35 @@ export const styles = css`
     grid-column: 2 / auto;
   }
   .track-start {
-    background-color: var(${colorCompoundBrandBackground});
+    background-color: var(${colorControlSliderDefaultTrackSelectedFillRest}, var(${colorCompoundBrandBackground}));
     position: absolute;
     height: 100%;
     left: 0;
     border-radius: var(${borderRadiusMedium});
   }
   :host([disabled]) .track-start {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: var(
+      ${colorControlSliderDefaultTrackSelectedFillDisabled},
+      var(${colorNeutralForegroundDisabled})
+    );
   }
   :host(:hover) .track-start {
-    background-color: var(${colorCompoundBrandBackgroundHover});
+    background-color: var(
+      ${colorControlSliderDefaultTrackSelectedFillHover},
+      var(${colorCompoundBrandBackgroundHover})
+    );
   }
   :host([disabled]:hover) .track-start {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: var(
+      ${colorControlSliderDefaultTrackSelectedFillDisabled},
+      var(${colorNeutralForegroundDisabled})
+    );
   }
   .track-start:active {
-    background-color: var(${colorCompoundBrandBackgroundPressed});
+    background-color: var(
+      ${colorControlSliderDefaultTrackSelectedFillPressed},
+      var(${colorCompoundBrandBackgroundPressed})
+    );
   }
   :host([orientation='vertical']) .track-start {
     height: auto;

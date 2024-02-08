@@ -6,6 +6,11 @@ import {
   colorTransparentStroke,
   shadow16,
 } from '../theme/design-tokens.js';
+import {
+  colorPageFlyoutDefaultFillPrimary,
+  layoutCornerFlyoutRest,
+  shadowControlFlyout,
+} from '../theme/design-tokens-new.js';
 
 /** MenuList styles
  * @public
@@ -19,10 +24,10 @@ export const styles = css`
     max-width: 300px;
     min-width: 160px;
     width: auto;
-    background-color: var(${colorNeutralBackground1});
+    background-color: var(${colorPageFlyoutDefaultFillPrimary}, var(${colorNeutralBackground1}));
     border: 1px solid var(${colorTransparentStroke});
-    border-radius: var(${borderRadiusMedium});
-    box-shadow: var(${shadow16});
+    border-radius: var(${layoutCornerFlyoutRest}, var(${borderRadiusMedium}));
+    box-shadow: var(${shadowControlFlyout}, var(${shadow16}));
     padding: 4px;
     row-gap: 2px;
   }

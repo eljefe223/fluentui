@@ -19,8 +19,6 @@ import {
   colorNeutralForeground2,
   colorNeutralForeground2BrandHover,
   colorNeutralForeground2BrandPressed,
-  colorNeutralForeground2Hover,
-  colorNeutralForeground2Pressed,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundOnBrand,
   colorNeutralStroke1,
@@ -56,13 +54,53 @@ import {
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import {
+  colorControlButtonAccentFillHover,
+  colorControlButtonAccentFillPressed,
+  colorControlButtonAccentFillRest,
+  colorControlButtonAccentForegroundHover,
+  colorControlButtonAccentForegroundPressed,
+  colorControlButtonAccentForegroundRest,
+  colorControlButtonDefaultFillHover,
+  colorControlButtonDefaultFillPressed,
+  colorControlButtonDefaultFillRest,
+  colorControlButtonDefaultStrokeHover,
+  colorControlButtonDefaultStrokePressed,
+  colorControlButtonDefaultStrokeRest,
+  colorControlButtonOutlineFillRest,
+  colorControlButtonOutlineStrokeHover,
+  colorControlButtonOutlineStrokePressed,
+  colorControlButtonOutlineStrokeRest,
+  colorControlButtonSubtleFillDisabled,
+  colorControlButtonSubtleFillHover,
+  colorControlButtonSubtleFillPressed,
+  colorControlButtonSubtleFillRest,
+  colorControlFocusStrokeInner,
+  colorControlFocusStrokeOuter,
+  colorControlForegroundLabelOnPageLightUpHover,
+  colorControlForegroundLabelOnPageLightUpPressed,
+  colorControlForegroundLabelOnPageLightUpRest,
+  colorControlForegroundTextOnPlatePrimaryHover,
+  colorControlForegroundTextOnPlatePrimaryPressed,
+  colorControlForegroundTextOnPlatePrimaryRest,
+  colorControlLinkAccentForegroundRest,
+  controlHeight,
+  layoutControlGapIconToText,
+  layoutControlPaddingHorizontal,
+  layoutControlStrokeDefaultRest,
+  layoutControlTextMarginBottom,
+  layoutControlTextMarginTop,
+  layoutCornerControlDefaultHover,
+  layoutCornerControlDefaultPressed,
+  layoutCornerControlDefaultRest,
+} from '../theme/design-tokens-new.js';
 
 // Need to support icon hover styles
 export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    --icon-spacing: var(${spacingHorizontalSNudge});
+    --icon-spacing: var(${layoutControlGapIconToText}, var(${spacingHorizontalSNudge}));
     contain: layout style;
     vertical-align: middle;
   }
@@ -74,14 +112,15 @@ export const styles = css`
     justify-content: center;
     text-decoration-line: none;
     margin: 0;
-    min-height: 32px;
+    min-height: var(${controlHeight}, 32px);
     outline-style: none;
-    background-color: var(${colorNeutralBackground1});
-    color: var(${colorNeutralForeground1});
-    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke1});
-    padding: 0 var(${spacingHorizontalM});
+    background-color: var(${colorControlButtonDefaultFillRest}, var(${colorNeutralBackground1}));
+    color: var(${colorControlForegroundTextOnPlatePrimaryRest}, var(${colorNeutralForeground1}));
+    border: var(${layoutControlStrokeDefaultRest}, var(${strokeWidthThin})) solid
+      var(${colorControlButtonDefaultStrokeRest}, var(${colorNeutralStroke1}));
+    padding: 0 var(${layoutControlPaddingHorizontal}, var(${spacingHorizontalM}));
     min-width: 96px;
-    border-radius: var(${borderRadiusMedium});
+    border-radius: var(${layoutCornerControlDefaultRest}, var(${borderRadiusMedium}));
     font-size: var(${fontSizeBase300});
     font-family: var(${fontFamilyBase});
     font-weight: var(${fontWeightSemibold});
@@ -94,25 +133,29 @@ export const styles = css`
 
   .content {
     display: inherit;
+    margin-top: var(${layoutControlTextMarginTop}, 0);
+    margin-bottom: var(${layoutControlTextMarginBottom}, 0);
   }
 
   :host(:hover) .control {
-    background-color: var(${colorNeutralBackground1Hover});
-    color: var(${colorNeutralForeground1Hover});
-    border-color: var(${colorNeutralStroke1Hover});
+    background-color: var(${colorControlButtonDefaultFillHover}, var(${colorNeutralBackground1Hover}));
+    color: var(${colorControlForegroundTextOnPlatePrimaryHover}, var(${colorNeutralForeground1Hover}));
+    border-color: var(${colorControlButtonDefaultStrokeHover}, var(${colorNeutralStroke1Hover}));
+    border-radius: var(${layoutCornerControlDefaultHover}, var(${borderRadiusMedium}));
   }
 
   :host(:hover:active) .control {
-    background-color: var(${colorNeutralBackground1Pressed});
-    border-color: var(${colorNeutralStroke1Pressed});
-    color: var(${colorNeutralForeground1Pressed});
+    background-color: var(${colorControlButtonDefaultFillPressed}, var(${colorNeutralBackground1Pressed}));
+    border-color: var(${colorControlButtonDefaultStrokePressed}, var(${colorNeutralStroke1Pressed}));
+    color: var(${colorControlForegroundTextOnPlatePrimaryPressed}, var(${colorNeutralForeground1Pressed}));
+    border-radius: var(${layoutCornerControlDefaultPressed}, var(${borderRadiusMedium}));
     outline-style: none;
   }
 
   :host .control:focus-visible {
-    border-color: var(${colorTransparentStroke});
-    outline: var(${strokeWidthThick}) solid var(${colorTransparentStroke});
-    box-shadow: var(${shadow4}), 0 0 0 2px var(${colorStrokeFocus2});
+    border-color: var(${colorControlFocusStrokeInner}, var(${colorTransparentStroke}));
+    outline: var(${strokeWidthThick}) solid var(${colorControlFocusStrokeInner}, var(${colorTransparentStroke}));
+    box-shadow: var(${shadow4}), 0 0 0 2px var(${colorControlFocusStrokeOuter}, var(${colorStrokeFocus2}));
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
@@ -190,27 +233,27 @@ export const styles = css`
   }
 
   :host([appearance='primary']) .control {
-    background-color: var(${colorBrandBackground});
-    color: var(${colorNeutralForegroundOnBrand});
+    background-color: var(${colorControlButtonAccentFillRest}, var(${colorBrandBackground}));
+    color: var(${colorControlButtonAccentForegroundRest}, var(${colorNeutralForegroundOnBrand}));
     border-color: transparent;
   }
 
   :host([appearance='primary']:hover) .control {
-    background-color: var(${colorBrandBackgroundHover});
+    background-color: var(${colorControlButtonAccentFillHover}, var(${colorBrandBackgroundHover}));
+    color: var(${colorControlButtonAccentForegroundHover}, var(${colorNeutralForegroundOnBrand}));
   }
 
-  :host([appearance='primary']:hover) .control,
   :host([appearance='primary']:hover:active) .control {
     border-color: transparent;
-    color: var(${colorNeutralForegroundOnBrand});
+    color: var(${colorControlButtonAccentForegroundPressed}, var(${colorNeutralForegroundOnBrand}));
   }
 
   :host([appearance='primary']:hover:active) .control {
-    background-color: var(${colorBrandBackgroundPressed});
+    background-color: var(${colorControlButtonAccentFillPressed}, var(${colorBrandBackgroundPressed}));
   }
 
   :host([appearance='primary']) .control:focus-visible {
-    border-color: var(${colorNeutralForegroundOnBrand});
+    border-color: var(${colorControlFocusStrokeInner}, var(${colorNeutralForegroundOnBrand}));
     box-shadow: var(${shadow2}), 0 0 0 2px var(${colorStrokeFocus2});
   }
 
@@ -221,14 +264,17 @@ export const styles = css`
   }
 
   :host([appearance='outline']) .control {
-    background-color: var(${colorTransparentBackground});
+    border-color: var(${colorControlButtonOutlineStrokeRest});
+    background-color: var(${colorControlButtonOutlineFillRest}, var(${colorTransparentBackground}));
   }
 
   :host([appearance='outline']:hover) .control {
+    border-color: var(${colorControlButtonOutlineStrokeHover});
     background-color: var(${colorTransparentBackgroundHover});
   }
 
   :host([appearance='outline']:hover:active) .control {
+    border-color: var(${colorControlButtonOutlineStrokePressed});
     background-color: var(${colorTransparentBackgroundPressed});
   }
 
@@ -239,51 +285,52 @@ export const styles = css`
   }
 
   :host([appearance='subtle']) .control {
-    background-color: var(${colorSubtleBackground});
-    color: var(${colorNeutralForeground2});
+    background-color: var(${colorControlButtonSubtleFillRest}, var(${colorSubtleBackground}));
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover) .control {
-    background-color: var(${colorSubtleBackgroundHover});
-    color: var(${colorNeutralForeground2Hover});
+    background-color: var(${colorControlButtonSubtleFillHover}, var(${colorSubtleBackgroundHover}));
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover:active) .control {
-    background-color: var(${colorSubtleBackgroundPressed});
-    color: var(${colorNeutralForeground2Pressed});
+    background-color: var(${colorControlButtonSubtleFillPressed}, var(${colorSubtleBackgroundPressed}));
     border-color: transparent;
   }
 
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"])) .control,
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover) .control,
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover:active) .control {
-    background-color: var(${colorTransparentBackground});
+    background-color: var(${colorControlButtonSubtleFillDisabled}, var(${colorTransparentBackground}));
     border-color: transparent;
   }
 
+  :host([appearance='subtle']) ::slotted(svg) {
+    fill: var(${colorControlLinkAccentForegroundRest}, var(${colorNeutralForeground2BrandHover}));
+  }
+
   :host([appearance='subtle']:hover) ::slotted(svg) {
-    fill: var(${colorNeutralForeground2BrandHover});
+    fill: var(${colorControlForegroundLabelOnPageLightUpHover}, var(${colorNeutralForeground2BrandHover}));
   }
 
   :host([appearance='subtle']:hover:active) ::slotted(svg) {
-    fill: var(${colorNeutralForeground2BrandPressed});
+    fill: var(${colorControlForegroundLabelOnPageLightUpPressed}, var(${colorNeutralForeground2BrandPressed}));
   }
 
   :host([appearance='transparent']) .control {
     background-color: var(${colorTransparentBackground});
-    color: var(${colorNeutralForeground2});
+    color: var(${colorControlForegroundLabelOnPageLightUpRest}, var(${colorNeutralForeground2}));
   }
 
   :host([appearance='transparent']:hover) .control {
     background-color: var(${colorTransparentBackgroundHover});
-    color: var(${colorNeutralForeground2BrandHover});
+    color: var(${colorControlForegroundLabelOnPageLightUpHover}, var(${colorNeutralForeground2BrandHover}));
   }
 
   :host([appearance='transparent']:hover:active) .control {
     background-color: var(${colorTransparentBackgroundPressed});
-    color: var(${colorNeutralForeground2BrandPressed});
+    color: var(${colorControlForegroundLabelOnPageLightUpPressed}, var(${colorNeutralForeground2BrandPressed}));
   }
 
   :host([appearance='transparent']) .control,

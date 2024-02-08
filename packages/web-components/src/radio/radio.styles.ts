@@ -23,6 +23,34 @@ import {
   spacingHorizontalXS,
   spacingVerticalS,
 } from '../theme/design-tokens.js';
+import {
+  colorControlForegroundLabelOnPagePrimaryDisabled,
+  colorControlSwitchDefaultFillDisabled,
+  colorControlSwitchDefaultFillHover,
+  colorControlSwitchDefaultFillRest,
+  colorControlSwitchDefaultSelectorPressed,
+  colorControlSwitchDefaultStrokeDisabled,
+  colorControlSwitchDefaultStrokeHover,
+  colorControlSwitchDefaultStrokeRest,
+  colorControlSwitchSelectedDefaultBackgroundDisabled,
+  colorControlSwitchSelectedDefaultBackgroundHover,
+  colorControlSwitchSelectedDefaultBackgroundPressed,
+  colorControlSwitchSelectedDefaultBackgroundRest,
+  colorControlSwitchSelectedDefaultSelectorDisabled,
+  colorControlSwitchSelectedDefaultSelectorHover,
+  colorControlSwitchSelectedDefaultSelectorPressed,
+  colorControlSwitchSelectedDefaultSelectorRest,
+  layoutControlStrokeOutlineHover,
+  layoutControlStrokeOutlineRest,
+  layoutControlSwitchBaseSize,
+  layoutControlSwitchGapControlToLabel,
+  layoutControlSwitchSelectorSizeHover,
+  layoutControlSwitchSelectorSizePressed,
+  layoutControlSwitchSelectorSizeRest,
+  layoutCornerControlRadioHover,
+  layoutCornerControlRadioInnerHover,
+  layoutCornerControlSelectorRest,
+} from '../theme/design-tokens-new.js';
 
 /** Radio styles
  * @public
@@ -65,24 +93,31 @@ export const styles = css`
   .control {
     box-sizing: border-box;
     align-items: center;
-    border: 1px solid var(--control-border-color, var(${colorNeutralStrokeAccessible}));
-    border-radius: var(${borderRadiusCircular});
+    border: var(${layoutControlStrokeOutlineRest}, 1px) solid
+      var(--control-border-color, var(${colorControlSwitchDefaultStrokeRest}, var(${colorNeutralStrokeAccessible})));
+    background: var(${colorControlSwitchDefaultFillRest});
+    border-radius: var(${layoutCornerControlSelectorRest}, var(${borderRadiusCircular}));
     display: flex;
-    height: 16px;
+    height: var(${layoutControlSwitchBaseSize}, 16px);
     justify-content: center;
-    margin: var(${spacingVerticalS}) var(${spacingHorizontalS});
+    margin: var(${layoutControlSwitchGapControlToLabel}, var(${spacingVerticalS}))
+      var(${layoutControlSwitchGapControlToLabel}, var(${spacingHorizontalS}));
     position: relative;
-    width: 16px;
+    width: var(${layoutControlSwitchBaseSize}, 16px);
     justify-self: center;
   }
   .checked-indicator {
-    border-radius: var(${borderRadiusCircular});
-    height: 10px;
+    border-radius: var(${layoutCornerControlSelectorRest}, var(${borderRadiusCircular}));
+    height: var(${layoutControlSwitchSelectorSizeRest}, 10px);
+    width: var(${layoutControlSwitchSelectorSizeRest}, 10px);
     opacity: 0;
-    width: 10px;
   }
   :host([aria-checked='false']:hover) .control {
+    background: var(${colorControlSwitchDefaultFillHover});
+    border-color: var(${colorControlSwitchDefaultStrokeHover});
     color: var(${colorNeutralForeground2});
+    border-width: var(${layoutControlStrokeOutlineHover}, 1px);
+    border-radius: var(${layoutCornerControlRadioHover}, var(${borderRadiusCircular}));
   }
   :host(:focus-visible) {
     border-radius: var(${borderRadiusSmall});
@@ -95,37 +130,68 @@ export const styles = css`
   :host(:active) .control {
     border-color: var(${colorNeutralStrokeAccessiblePressed});
   }
+
+  :host(:active) .checked-indicator,
   :host([aria-checked='true']) .checked-indicator {
     opacity: 1;
   }
+
+  :host(:active) .checked-indicator {
+    background-color: var(${colorControlSwitchDefaultSelectorPressed});
+  }
+
   :host([aria-checked='true']) .control {
-    border-color: var(--control-border-color, var(${colorNeutralStrokeAccessible}));
+    border-color: var(
+      --control-border-color,
+      var(${colorControlSwitchSelectedDefaultBackgroundRest}, var(${colorNeutralStrokeAccessible}))
+    );
+    background: var(${colorControlSwitchSelectedDefaultBackgroundRest});
   }
   :host([aria-checked='true']) .checked-indicator {
-    background-color: var(--checked-indicator-background-color, var(${colorCompoundBrandForeground1}));
+    background-color: var(
+      --checked-indicator-background-color,
+      var(${colorControlSwitchSelectedDefaultSelectorRest}, var(${colorCompoundBrandForeground1}))
+    );
   }
+
   :host([aria-checked='true']:hover) .control {
-    border-color: var(${colorCompoundBrandStrokeHover});
+    border-color: var(${colorControlSwitchSelectedDefaultBackgroundHover}, var(${colorCompoundBrandStrokeHover}));
+    background: var(${colorControlSwitchSelectedDefaultBackgroundHover});
+    border-radius: var(${layoutCornerControlRadioHover}, var(${borderRadiusCircular}));
   }
   :host([aria-checked='true']:hover) .checked-indicator {
-    background-color: var(${colorCompoundBrandStrokeHover});
+    background-color: var(${colorControlSwitchSelectedDefaultSelectorHover}, var(${colorCompoundBrandStrokeHover}));
+    border-radius: var(${layoutCornerControlRadioInnerHover}, var(${borderRadiusCircular}));
+    height: var(${layoutControlSwitchSelectorSizeHover}, 10px);
+    width: var(${layoutControlSwitchSelectorSizeHover}, 10px);
   }
+
   :host([aria-checked='true']:active) .control {
-    border-color: var(${colorCompoundBrandStrokePressed});
+    border-color: var(${colorControlSwitchSelectedDefaultBackgroundPressed}, var(${colorCompoundBrandStrokePressed}));
+    background: var(${colorControlSwitchSelectedDefaultBackgroundPressed});
   }
   :host([aria-checked='true']:active) .checked-indicator {
-    background: var(${colorCompoundBrandForeground1Pressed});
+    background: var(${colorControlSwitchSelectedDefaultSelectorPressed}, var(${colorCompoundBrandForeground1Pressed}));
+    height: var(${layoutControlSwitchSelectorSizePressed}, 10px);
+    width: var(${layoutControlSwitchSelectorSizePressed}, 10px);
   }
   :host([disabled]) {
-    color: var(${colorNeutralForegroundDisabled});
+    color: var(${colorControlForegroundLabelOnPagePrimaryDisabled});
     pointer-events: none;
   }
   :host([disabled]) .control {
     pointer-events: none;
-    border-color: var(${colorNeutralForegroundDisabled});
+    border-color: var(${colorControlSwitchDefaultStrokeDisabled}, var(${colorNeutralForegroundDisabled}));
+    background: var(${colorControlSwitchDefaultFillDisabled});
   }
   :host([disabled]) .checked-indicator {
-    background: var(${colorNeutralForegroundDisabled});
+    background: var(${colorControlSwitchSelectedDefaultSelectorDisabled}, var(${colorNeutralForegroundDisabled}));
+  }
+  :host([disabled][aria-checked='true']) .control {
+    pointer-events: none;
+    border-color: var(${colorControlSwitchSelectedDefaultBackgroundDisabled}, var(${colorNeutralForegroundDisabled}));
+    background: var(${colorControlSwitchSelectedDefaultBackgroundDisabled});
+    background-clip: content-box;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
