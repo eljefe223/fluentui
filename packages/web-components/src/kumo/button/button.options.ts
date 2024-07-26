@@ -1,6 +1,5 @@
-import { StartEndOptions } from '../../patterns/index.js';
 import type { ValuesOf } from '../../utils/index.js';
-import type { Button } from '../../button/button.js';
+export { ButtonType, ButtonOptions, ButtonFormTarget } from '../../button/button.options.js';
 
 /**
  * ButtonAppearance constants
@@ -45,44 +44,3 @@ export const ButtonSize = {
  * @public
  */
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
-
-/**
- * Button type values.
- *
- * @public
- */
-export const ButtonType = {
-  submit: 'submit',
-  reset: 'reset',
-  button: 'button',
-} as const;
-
-/**
- * Type for button type values.
- *
- * @public
- */
-export type ButtonType = ValuesOf<typeof ButtonType>;
-
-/**
- * Button configuration options.
- * @public
- */
-export type ButtonOptions = StartEndOptions<Button>;
-
-/**
- * Button `formtarget` attribute values.
- * @public
- */
-export const ButtonFormTarget = {
-  blank: '_blank',
-  self: '_self',
-  parent: '_parent',
-  top: '_top',
-} as const;
-
-/**
- * Types for the `formtarget` attribute values.
- * @public
- */
-export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;
