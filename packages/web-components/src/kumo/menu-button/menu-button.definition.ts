@@ -1,6 +1,6 @@
 import { styles } from '../button/button.styles.js';
-import { MenuButton } from './menu-button.js';
-import { template } from './menu-button.template.js';
+import { MenuButton } from '../../menu-button/menu-button.js';
+import { template } from '../../menu-button/menu-button.template.js';
 
 /**
  * @public
