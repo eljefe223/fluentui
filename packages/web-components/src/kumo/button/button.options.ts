@@ -17,20 +17,6 @@ export const ButtonAppearance = {
 export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
 
 /**
- * A Button can be square, circular or rounded.
- * @public
- */
-export const ButtonShape = {
-  rounded: 'rounded',
-} as const;
-
-/**
- * A Button can be square, circular or rounded
- * @public
- */
-export type ButtonShape = ValuesOf<typeof ButtonShape>;
-
-/**
  * A Button can be a size of small, medium or large.
  * @public
  */
