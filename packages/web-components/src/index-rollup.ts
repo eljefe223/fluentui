@@ -39,3 +39,4 @@ import './toggle-button/define.js';
 //KUMO Definitions
 import './kumo/accordion/define.js';
 import './kumo/accordion-item/define.js';
+import './kumo/avatar/define.js';
