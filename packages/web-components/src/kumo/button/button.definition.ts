@@ -1,6 +1,6 @@
 import { Button } from '../../button/button.js';
+import { template } from '../../button/button.template.js';
 import { styles } from './button.styles.js';
-import { template } from './button.template.js';
 
 /**
  * @public
