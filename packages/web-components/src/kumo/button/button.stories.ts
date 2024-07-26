@@ -1,10 +1,10 @@
 import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../../helpers.stories.js';
 import { renderComponent } from '../../helpers.stories.js';
-import type { Button as FluentButton } from '../../button/button.js';
-import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
+import type { Button as KumoButton } from '../../button/button.js';
+import { ButtonAppearance, ButtonSize } from './button.options.js';
 
-const storyTemplate = html<StoryArgs<FluentButton>>`
+const storyTemplate = html<StoryArgs<KumoButton>>`
   <kumo-button
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
@@ -64,11 +64,11 @@ export default {
       control: 'Button text',
     },
   },
-} as Meta<FluentButton>;
+} as Meta<KumoButton>;
 
-export const Button: Story<FluentButton> = renderComponent(storyTemplate).bind({});
+export const Button: Story<KumoButton> = renderComponent(storyTemplate).bind({});
 
-export const Appearance: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+export const Appearance: Story<KumoButton> = renderComponent(html<StoryArgs<KumoButton>>`
   <kumo-button>Default</kumo-button>
   <kumo-button appearance="primary">Primary</kumo-button>
   <kumo-button appearance="outline">Outline</kumo-button>
@@ -76,7 +76,7 @@ export const Appearance: Story<FluentButton> = renderComponent(html<StoryArgs<Fl
   <kumo-button appearance="transparent">Transparent</kumo-button>
 `);
 
-export const Size: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+export const Size: Story<KumoButton> = renderComponent(html<StoryArgs<KumoButton>>`
   <kumo-button size="medium">Medium</kumo-button>
   <kumo-button size="medium" icon>
     <svg
@@ -145,7 +145,7 @@ export const Size: Story<FluentButton> = renderComponent(html<StoryArgs<FluentBu
   </kumo-button>
 `);
 
-export const Disabled: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+export const Disabled: Story<KumoButton> = renderComponent(html<StoryArgs<KumoButton>>`
   <kumo-button>Enabled state</kumo-button>
   <kumo-button disabled>Disabled state</kumo-button>
   <kumo-button disabled-focusable>Disabled focusable state</kumo-button>
@@ -154,7 +154,7 @@ export const Disabled: Story<FluentButton> = renderComponent(html<StoryArgs<Flue
   <kumo-button appearance="primary" disabled-focusable>Disabled focusable state</kumo-button>
 `);
 
-export const WithLongText: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+export const WithLongText: Story<KumoButton> = renderComponent(html<StoryArgs<KumoButton>>`
   <style>
     .max-width {
       width: 280px;
@@ -164,7 +164,7 @@ export const WithLongText: Story<FluentButton> = renderComponent(html<StoryArgs<
   <kumo-button class="max-width">Long text wraps after it hits the max width of the component</kumo-button>
 `);
 
-export const ResetAndSubmitButtonsInForm: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+export const ResetAndSubmitButtonsInForm: Story<KumoButton> = renderComponent(html<StoryArgs<KumoButton>>`
   <form action="/asdf" id="myform" onreset="output.textContent = ''">
     <label>Email: <input id="input-field" name="input-field" type="email" /></label>
     <button type="submit" value="submitted" name="normalsubmit">Button Submit</button>
