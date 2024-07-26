@@ -1,6 +1,6 @@
-import { AnchorButton } from './anchor-button.js';
-import { styles } from './anchor-button.styles.js';
-import { template } from './anchor-button.template.js';
+import { AnchorButton } from '../../anchor-button/anchor-button.js';
+import { template } from '../../anchor-button/anchor-button.template.js';
+import { styles } from '../button/button.styles.js';
 
 /**
  * @public
