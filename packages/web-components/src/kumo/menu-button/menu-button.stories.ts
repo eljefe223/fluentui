@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import { ButtonAppearance as MenuButtonAppearance, ButtonSize as MenuButtonSize } from '../button/button.options.js';
-import type { MenuButton as KumoMenuButton } from '../../menu-button/menu-button.js';
+import type { KumoMenuButton } from './menu-button.js';
 
 type MenuButtonStoryArgs = Args & KumoMenuButton;
 type MenuButtonStoryMeta = Meta<MenuButtonStoryArgs>;
