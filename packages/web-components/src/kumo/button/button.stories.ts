@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../../helpers.stories.js';
 import { renderComponent } from '../../helpers.stories.js';
-import type { Button as KumoButton } from '../../button/button.js';
+import type { KumoButton } from './button.js';
 import { ButtonAppearance, ButtonSize } from './button.options.js';
 
 const storyTemplate = html<StoryArgs<KumoButton>>`
