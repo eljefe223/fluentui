@@ -1,0 +1,142 @@
+import { html } from '@microsoft/fast-element';
+import type { Args, Meta } from '@storybook/html';
+import { renderComponent } from '../../helpers.stories.js';
+import type { AnchorButton as KumoAnchorButton } from '../../anchor-button/anchor-button.js';
+import {
+  KumoButtonAppearance as KumoAnchorButtonAppearance,
+  KumoButtonSize as KumoAnchorButtonSize,
+} from '../button/button.options.js';
+
+type KumoAnchorButtonStoryArgs = Args & KumoAnchorButton;
+type KumoAnchorButtonStoryMeta = Meta<KumoAnchorButtonStoryArgs>;
+
+const storyTemplate = html<KumoAnchorButtonStoryArgs>`
+  <kumo-anchor-button
+    href="${x => x.href}"
+    appearance="${x => x.appearance}"
+    shape="${x => x.shape}"
+    size="${x => x.size}"
+    ?icon-only="${x => x.iconOnly}"
+  >
+    ${x => x.content}
+  </kumo-anchor-button>
+`;
+
+export default {
+  title: 'Components/Kumo/Button/Anchor',
+  args: {
+    content: 'Anchor',
+    href: '#',
+    disabled: false,
+    disabledFocusable: false,
+  },
+  argTypes: {
+    appearance: {
+      options: Object.values(KumoAnchorButtonAppearance),
+      control: {
+        type: 'select',
+      },
+    },
+    size: {
+      options: Object.values(KumoAnchorButtonSize),
+      control: {
+        type: 'select',
+      },
+    },
+    href: {
+      control: 'text',
+    },
+    content: {
+      control: 'Anchor text',
+    },
+  },
+} as KumoAnchorButtonStoryMeta;
+
+export const AnchorButton = renderComponent(storyTemplate).bind({});
+
+export const Appearance = renderComponent(html<KumoAnchorButtonStoryArgs>`
+  <kumo-anchor-button href="#">Default</kumo-anchor-button>
+  <kumo-anchor-button href="#" appearance="primary">Primary</kumo-anchor-button>
+  <kumo-anchor-button href="#" appearance="transparent">Transparent</kumo-anchor-button>
+`);
+
+export const Size = renderComponent(html<KumoAnchorButtonStoryArgs>`
+  <kumo-anchor-button href="#" size="medium">Medium</kumo-anchor-button>
+  <kumo-anchor-button href="#" size="medium" icon>
+    <svg
+      fill="currentColor"
+      slot="start"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+    Medium with calendar icon
+  </kumo-anchor-button>
+  <kumo-anchor-button href="#" size="medium" icon-only aria-label="Medium icon only button"
+    ><svg
+      fill="currentColor"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </kumo-anchor-button>
+  <kumo-anchor-button href="#" size="large">Large</kumo-anchor-button>
+  <kumo-anchor-button href="#" size="large" icon
+    ><svg
+      fill="currentColor"
+      slot="start"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+    Large with calendar icon
+  </kumo-anchor-button>
+  <kumo-anchor-button href="#" size="large" icon-only aria-label="Large icon only button"
+    ><svg
+      fill="currentColor"
+      aria-hidden="true"
+      width="1em"
+      height="1em"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M14.5 3A2.5 2.5 0 0117 5.5v9a2.5 2.5 0 01-2.5 2.5h-9A2.5 2.5 0 013 14.5v-9A2.5 2.5 0 015.5 3h9zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5zM7 11a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM7 7a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </kumo-anchor-button>
+`);
+
+export const WithLongText = renderComponent(html<KumoAnchorButtonStoryArgs>`
+  <style>
+    .max-width {
+      width: 280px;
+    }
+  </style>
+  <kumo-anchor-button href="#">Short text</kumo-anchor-button>
+  <kumo-anchor-button href="#" class="max-width"
+    >Long text wraps after it hits the max width of the component</kumo-anchor-button
+  >
+`);
