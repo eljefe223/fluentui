@@ -7,5 +7,4 @@ export const cardStyles = css.partial`
   display: flex;
   width: 100%;
   border: 1px solid ${colorNeutralStroke1};
-  padding: 20px;
 `;

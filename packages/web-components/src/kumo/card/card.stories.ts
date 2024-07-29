@@ -10,6 +10,7 @@ const storyTemplate = html<CardStoryArgs>`
   <style>
     .my-card {
       ${cardStyles.createCSS(() => {})}
+      padding: 20px;
     }
   </style>
   <div class="my-card">test</div>
