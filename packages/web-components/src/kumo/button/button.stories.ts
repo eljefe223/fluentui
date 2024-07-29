@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../../helpers.stories.js';
 import { renderComponent } from '../../helpers.stories.js';
 import type { KumoButton } from './button.js';
-import { ButtonAppearance, ButtonSize } from './button.options.js';
+import { KumoButtonAppearance, KumoButtonSize } from './button.options.js';
 
 const storyTemplate = html<StoryArgs<KumoButton>>`
   <kumo-button
@@ -27,13 +27,13 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: Object.values(ButtonAppearance),
+      options: Object.values(KumoButtonAppearance),
       control: {
         type: 'select',
       },
     },
     size: {
-      options: Object.values(ButtonSize),
+      options: Object.values(KumoButtonSize),
       control: {
         type: 'select',
       },
