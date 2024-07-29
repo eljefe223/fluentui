@@ -3,14 +3,14 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import type { AnchorButton as KumoAnchorButton } from '../../anchor-button/anchor-button.js';
 import {
-  ButtonAppearance as AnchorButtonAppearance,
-  ButtonSize as AnchorButtonSize,
+  KumoButtonAppearance as KumoAnchorButtonAppearance,
+  KumoButtonSize as KumoAnchorButtonSize,
 } from '../button/button.options.js';
 
-type AnchorButtonStoryArgs = Args & KumoAnchorButton;
-type AnchorButtonStoryMeta = Meta<AnchorButtonStoryArgs>;
+type KumoAnchorButtonStoryArgs = Args & KumoAnchorButton;
+type KumoAnchorButtonStoryMeta = Meta<KumoAnchorButtonStoryArgs>;
 
-const storyTemplate = html<AnchorButtonStoryArgs>`
+const storyTemplate = html<KumoAnchorButtonStoryArgs>`
   <kumo-anchor-button
     href="${x => x.href}"
     appearance="${x => x.appearance}"
@@ -32,13 +32,13 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: Object.values(AnchorButtonAppearance),
+      options: Object.values(KumoAnchorButtonAppearance),
       control: {
         type: 'select',
       },
     },
     size: {
-      options: Object.values(AnchorButtonSize),
+      options: Object.values(KumoAnchorButtonSize),
       control: {
         type: 'select',
       },
@@ -50,17 +50,17 @@ export default {
       control: 'Anchor text',
     },
   },
-} as AnchorButtonStoryMeta;
+} as KumoAnchorButtonStoryMeta;
 
 export const AnchorButton = renderComponent(storyTemplate).bind({});
 
-export const Appearance = renderComponent(html<AnchorButtonStoryArgs>`
+export const Appearance = renderComponent(html<KumoAnchorButtonStoryArgs>`
   <kumo-anchor-button href="#">Default</kumo-anchor-button>
   <kumo-anchor-button href="#" appearance="primary">Primary</kumo-anchor-button>
   <kumo-anchor-button href="#" appearance="transparent">Transparent</kumo-anchor-button>
 `);
 
-export const Size = renderComponent(html<AnchorButtonStoryArgs>`
+export const Size = renderComponent(html<KumoAnchorButtonStoryArgs>`
   <kumo-anchor-button href="#" size="medium">Medium</kumo-anchor-button>
   <kumo-anchor-button href="#" size="medium" icon>
     <svg
@@ -129,7 +129,7 @@ export const Size = renderComponent(html<AnchorButtonStoryArgs>`
   </kumo-anchor-button>
 `);
 
-export const WithLongText = renderComponent(html<AnchorButtonStoryArgs>`
+export const WithLongText = renderComponent(html<KumoAnchorButtonStoryArgs>`
   <style>
     .max-width {
       width: 280px;

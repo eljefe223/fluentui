@@ -1,13 +1,16 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
-import { ButtonAppearance as MenuButtonAppearance, ButtonSize as MenuButtonSize } from '../button/button.options.js';
+import {
+  KumoButtonAppearance as KumoMenuButtonAppearance,
+  KumoButtonSize as KumoMenuButtonSize,
+} from '../button/button.options.js';
 import type { KumoMenuButton } from './menu-button.js';
 
-type MenuButtonStoryArgs = Args & KumoMenuButton;
-type MenuButtonStoryMeta = Meta<MenuButtonStoryArgs>;
+type KumoMenuButtonStoryArgs = Args & KumoMenuButton;
+type KumoMenuButtonStoryMeta = Meta<KumoMenuButtonStoryArgs>;
 
-const storyTemplate = html<MenuButtonStoryArgs>`
+const storyTemplate = html<KumoMenuButtonStoryArgs>`
   <kumo-menu-button
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
@@ -29,13 +32,13 @@ export default {
   },
   argTypes: {
     appearance: {
-      options: Object.values(MenuButtonAppearance),
+      options: Object.values(KumoMenuButtonAppearance),
       control: {
         type: 'select',
       },
     },
     size: {
-      options: Object.values(MenuButtonSize),
+      options: Object.values(KumoMenuButtonSize),
       control: {
         type: 'select',
       },
@@ -66,17 +69,17 @@ export default {
       control: 'Button text',
     },
   },
-} as MenuButtonStoryMeta;
+} as KumoMenuButtonStoryMeta;
 
 export const Button = renderComponent(storyTemplate).bind({});
 
-export const Appearance = renderComponent(html<MenuButtonStoryArgs>`
+export const Appearance = renderComponent(html<KumoMenuButtonStoryArgs>`
   <kumo-menu-button>Default</kumo-menu-button>
   <kumo-menu-button appearance="primary">Primary</kumo-menu-button>
   <kumo-menu-button appearance="transparent">Transparent</kumo-menu-button>
 `);
 
-export const Size = renderComponent(html<MenuButtonStoryArgs>`
+export const Size = renderComponent(html<KumoMenuButtonStoryArgs>`
   <kumo-menu-button size="medium">Medium</kumo-menu-button>
   <kumo-menu-button size="medium" icon
     ><svg
@@ -141,7 +144,7 @@ export const Size = renderComponent(html<MenuButtonStoryArgs>`
   ></kumo-menu-button>
 `);
 
-export const CustomIcon = renderComponent(html<MenuButtonStoryArgs>`
+export const CustomIcon = renderComponent(html<KumoMenuButtonStoryArgs>`
   <kumo-menu-button size="medium"
     >Medium<svg
       slot="end"
@@ -176,7 +179,7 @@ export const CustomIcon = renderComponent(html<MenuButtonStoryArgs>`
   </kumo-menu-button>
 `);
 
-export const Disabled = renderComponent(html<MenuButtonStoryArgs>`
+export const Disabled = renderComponent(html<KumoMenuButtonStoryArgs>`
   <kumo-menu-button>Enabled state</kumo-menu-button>
   <kumo-menu-button disabled>Disabled state</kumo-menu-button>
   <kumo-menu-button disabled-focusable>Disabled focusable state</kumo-menu-button>
@@ -185,7 +188,7 @@ export const Disabled = renderComponent(html<MenuButtonStoryArgs>`
   <kumo-menu-button appearance="primary" disabled-focusable>Disabled focusable state</kumo-menu-button>
 `);
 
-export const WithLongText = renderComponent(html<MenuButtonStoryArgs>`
+export const WithLongText = renderComponent(html<KumoMenuButtonStoryArgs>`
   <style>
     .max-width {
       width: 280px;
