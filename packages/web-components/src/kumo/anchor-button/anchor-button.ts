@@ -5,8 +5,8 @@ import { applyMixins } from '../../utils/apply-mixins.js';
 import { toggleState } from '../../utils/element-internals.js';
 import { BaseAnchor } from '../../anchor-button/anchor-button.js';
 import {
-  type ButtonAppearance as AnchorButtonAppearance,
-  type ButtonSize as AnchorButtonSize,
+  type KumoButtonAppearance as KumoAnchorButtonAppearance,
+  type KumoButtonSize as KumoAnchorButtonSize,
 } from '../button/button.options.js';
 
 /**
@@ -30,14 +30,14 @@ export class KumoAnchorButton extends BaseAnchor {
    * HTML Attribute: `appearance`
    */
   @attr
-  public appearance?: AnchorButtonAppearance | undefined;
+  public appearance?: KumoAnchorButtonAppearance | undefined;
 
   /**
    * Handles changes to appearance attribute custom states
    * @param prev - the previous state
    * @param next - the next state
    */
-  public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
+  public appearanceChanged(prev: KumoAnchorButtonAppearance | undefined, next: KumoAnchorButtonAppearance | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
@@ -54,14 +54,14 @@ export class KumoAnchorButton extends BaseAnchor {
    * HTML Attribute: `size`
    */
   @attr
-  public size?: AnchorButtonSize;
+  public size?: KumoAnchorButtonSize;
 
   /**
    * Handles changes to size attribute custom states
    * @param prev - the previous state
    * @param next - the next state
    */
-  public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
+  public sizeChanged(prev: KumoAnchorButtonSize | undefined, next: KumoAnchorButtonSize | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
