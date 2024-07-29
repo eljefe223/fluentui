@@ -3,7 +3,7 @@ import { BaseButton } from '../../button/button.js';
 import { toggleState } from '../../utils/element-internals.js';
 import { applyMixins } from '../../utils/apply-mixins.js';
 import { StartEnd } from '../../patterns/index.js';
-import type { ButtonAppearance, ButtonSize } from './button.options.js';
+import type { KumoButtonAppearance, KumoButtonSize } from './button.options.js';
 
 /**
  * A Button Custom HTML Element.
@@ -20,14 +20,14 @@ export class KumoButton extends BaseButton {
    * HTML Attribute: `appearance`
    */
   @attr
-  public appearance?: ButtonAppearance;
+  public appearance?: KumoButtonAppearance;
 
   /**
    * Handles changes to appearance attribute custom states
    * @param prev - the previous state
    * @param next - the next state
    */
-  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
+  public appearanceChanged(prev: KumoButtonAppearance | undefined, next: KumoButtonAppearance | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
@@ -44,14 +44,14 @@ export class KumoButton extends BaseButton {
    * HTML Attribute: `size`
    */
   @attr
-  public size?: ButtonSize;
+  public size?: KumoButtonSize;
 
   /**
    * Handles changes to size attribute custom states
    * @param prev - the previous state
    * @param next - the next state
    */
-  public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
+  public sizeChanged(prev: KumoButtonSize | undefined, next: KumoButtonSize | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }

@@ -1,32 +1,31 @@
 import type { ValuesOf } from '../../utils/index.js';
-export { ButtonType, ButtonOptions, ButtonFormTarget } from '../../button/button.options.js';
 
 /**
- * ButtonAppearance constants
+ * KumoButtonAppearance constants
  * @public
  */
-export const ButtonAppearance = {
+export const KumoButtonAppearance = {
   primary: 'primary',
   transparent: 'transparent',
 } as const;
 
 /**
- * A Button can be secondary, primary, outline, subtle, transparent
+ * A KumoButton can be secondary, primary, outline, subtle, transparent
  * @public
  */
-export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
+export type KumoButtonAppearance = ValuesOf<typeof KumoButtonAppearance>;
 
 /**
- * A Button can be a size of small, medium or large.
+ * A KumoButton can be a size of small, medium or large.
  * @public
  */
-export const ButtonSize = {
+export const KumoButtonSize = {
   medium: 'medium',
   large: 'large',
 } as const;
 
 /**
- * A Button can be on of several preset sizes.
+ * A KumoButton can be on of several preset sizes.
  * @public
  */
-export type ButtonSize = ValuesOf<typeof ButtonSize>;
+export type KumoButtonSize = ValuesOf<typeof KumoButtonSize>;
