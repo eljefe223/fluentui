@@ -7,7 +7,7 @@ import { styles } from './dialog-body.styles.js';
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-dialog-body\>
+ * HTML Element: \<kumo-dialog-body\>
  */
 export const definition = DialogBody.compose({
   name: `kumo-dialog-body`,
