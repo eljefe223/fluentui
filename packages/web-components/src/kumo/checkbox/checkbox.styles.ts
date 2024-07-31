@@ -98,7 +98,6 @@ export const styles = css`
     position: absolute;
   }
 
-  ::slotted([slot='checked-indicator']),
   .checked-indicator {
     fill: currentColor;
     display: inline-flex;
@@ -106,7 +105,7 @@ export const styles = css`
     width: 12px;
   }
 
-  :host(:not(${checkedState})) *:is(::slotted([slot='checked-indicator']), .checked-indicator) {
+  :host(:not(${checkedState})) *:is(.checked-indicator) {
     display: none;
   }
 
