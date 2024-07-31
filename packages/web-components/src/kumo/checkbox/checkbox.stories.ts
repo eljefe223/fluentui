@@ -12,8 +12,6 @@ const storyTemplate = html<StoryArgs<KumoCheckbox>>`
     :indeterminate="${x => x.indeterminate}"
     name="${x => x.name}"
     ?required="${x => x.required}"
-    shape="${x => x.shape}"
-    size="${x => x.size}"
     slot="${x => x.slot}"
   ></kumo-checkbox>
 `;
