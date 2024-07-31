@@ -1,7 +1,5 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { html } from '@microsoft/fast-element';
-import { staticallyCompose } from '../../utils/template-helpers.js';
-import type { CheckboxOptions } from '../../checkbox/checkbox.options.js';
 import type { KumoCheckbox } from './checkbox.js';
 
 const checkedIndicator = html.partial(/* html */ `
@@ -25,7 +23,7 @@ const indeterminateIndicator = html.partial(/* html */ `
  * Template for the Checkbox component
  * @public
  */
-export function checkboxTemplate<T extends KumoCheckbox>(options: CheckboxOptions = {}): ElementViewTemplate<T> {
+export function checkboxTemplate<T extends KumoCheckbox>(): ElementViewTemplate<T> {
   return html<T>`
     <template
       tabindex="${x => (!x.disabled ? 0 : void 0)}"
@@ -34,8 +32,7 @@ export function checkboxTemplate<T extends KumoCheckbox>(options: CheckboxOption
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @keyup="${(x, c) => x.keyupHandler(c.event as KeyboardEvent)}"
     >
-      <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
-      <slot name="indeterminate-indicator">${staticallyCompose(options.indeterminateIndicator)}</slot>
+      ${checkedIndicator} ${indeterminateIndicator}
     </template>
   `;
 }
@@ -44,7 +41,4 @@ export function checkboxTemplate<T extends KumoCheckbox>(options: CheckboxOption
  * Template for the Checkbox component
  * @public
  */
-export const template: ElementViewTemplate<KumoCheckbox> = checkboxTemplate({
-  checkedIndicator,
-  indeterminateIndicator,
-});
+export const template: ElementViewTemplate<KumoCheckbox> = checkboxTemplate();
