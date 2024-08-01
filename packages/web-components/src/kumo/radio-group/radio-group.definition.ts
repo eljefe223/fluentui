@@ -3,12 +3,12 @@ import { styles } from '../../radio-group/radio-group.styles.js';
 import { template } from '../../radio-group/radio-group.template.js';
 
 /**
- * The Fluent RadioGroup Element.
+ * The Kumo RadioGroup Element.
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-radio-group\>
+ * HTML Element: \<kumo-radio-group\>
  */
 export const definition = RadioGroup.compose({
   name: `kumo-radio-group`,
