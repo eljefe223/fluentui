@@ -3,12 +3,12 @@ import { styles } from './radio.styles.js';
 import { template } from './radio.template.js';
 
 /**
- * The Fluent Radio Element.
+ * The Kumo Radio Element.
  *
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-radio\>
+ * HTML Element: \<kumo-radio\>
  */
 export const definition = Radio.compose({
   name: `kumo-radio`,
