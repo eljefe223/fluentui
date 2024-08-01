@@ -4,7 +4,7 @@ import { KumoLabelPosition } from './field.options.js';
 
 /**
  * A Field Custom HTML Element.
- * Based on BaseField and includes style and layout specific attributes
+ * Based on BaseField and includes layout specific attributes
  *
  * @public
  */
