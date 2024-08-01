@@ -6,7 +6,7 @@ import type { RadioGroup as KumoRadioGroup } from '../../radio-group/radio-group
 import { RadioGroupOrientation } from '../../radio-group/radio-group.options.js';
 
 const fieldTemplate = html<StoryArgs<FluentField>, StoryArgs<KumoRadioGroup>>`
-  <fluent-field label-position="${x => x.labelPosition ?? 'after'}">
+  <kumo-field label-position="${x => x.labelPosition ?? 'after'}">
     <label slot="label" for="${(x, c) => `${c.parent.id}--${x.id}`}">${x => x.label}</label>
     <kumo-radio
       slot="input"
@@ -16,11 +16,11 @@ const fieldTemplate = html<StoryArgs<FluentField>, StoryArgs<KumoRadioGroup>>`
       ?disabled="${x => x.disabled}"
       value="${x => x.value}"
     ></kumo-radio>
-  </fluent-field>
+  </kumo-field>
 `;
 
 const storyTemplate = html<StoryArgs<KumoRadioGroup>>`
-  <fluent-field>
+  <kumo-field>
     <label slot="label" for="${x => x.id}">${x => x.label}</label>
     <kumo-radio-group
       slot="input"
@@ -34,7 +34,7 @@ const storyTemplate = html<StoryArgs<KumoRadioGroup>>`
     >
       ${repeat(x => x.storyItems, fieldTemplate)}
     </kumo-radio-group>
-  </fluent-field>
+  </kumo-field>
 `;
 
 export default {
@@ -148,7 +148,7 @@ export const Required: Story<KumoRadioGroup> = renderComponent(html`
     action="#"
     style="display: inline-grid; grid-template-rows: repeat(auto, 3); align-items: center; column-gap: 1ch;"
   >
-    <fluent-field label-position="above" style="grid-template-rows: subgrid; grid-row: 1/4;">
+    <kumo-field label-position="above" style="grid-template-rows: subgrid; grid-row: 1/4;">
       <label slot="label" for="${x => x.id}" style="grid-row: 1/2">${x => x.label}</label>
       <kumo-radio-group
         ?required="${x => x.required}"
@@ -166,7 +166,7 @@ export const Required: Story<KumoRadioGroup> = renderComponent(html`
       <fluent-text flag="value-missing" slot="message" size="200" style="grid-row: 3/4"
         >Please select a fruit.</fluent-text
       >
-    </fluent-field>
+    </kumo-field>
     <kumo-button type="submit" appearance="primary" style="grid-row: 2/3">Submit</kumo-button>
     <kumo-button type="reset" style="grid-row: 2/3">Reset</kumo-button>
   </form>
