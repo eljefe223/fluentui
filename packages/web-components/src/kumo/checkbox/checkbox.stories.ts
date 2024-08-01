@@ -23,10 +23,10 @@ const messageTemplate = html`
 `;
 
 const fieldStoryTemplate = html<StoryArgs<KumoCheckbox>>`
-  <fluent-field label-position="${x => x.labelPosition}">
+  <kumo-field label-position="${x => x.labelPosition}">
     <label slot="label" for="${x => x.id}">${x => x.label}</label>
     ${x => x.storyContent} ${repeat(x => x.messages, messageTemplate)}
-  </fluent-field>
+  </kumo-field>
 `;
 
 export default {
