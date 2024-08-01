@@ -17,10 +17,10 @@ const storyTemplate = html<StoryArgs<KumoRadio>>`
 `;
 
 const fieldTemplate = html<StoryArgs<KumoRadio>>`
-  <fluent-field label-position="after">
+  <kumo-field label-position="after">
     <label slot="label">${x => x.value}</label>
     ${storyTemplate}
-  </fluent-field>
+  </kumo-field>
 `;
 
 export default {
