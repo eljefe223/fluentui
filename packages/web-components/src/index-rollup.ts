@@ -47,3 +47,5 @@ import './kumo/checkbox/define.js';
 import './kumo/dialog/define.js';
 import './kumo/dialog-body/define.js';
 import './kumo/menu-button/define.js';
+import './kumo/radio/define.js';
+import './kumo/radio-group/define.js';
