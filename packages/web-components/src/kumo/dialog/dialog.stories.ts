@@ -390,17 +390,17 @@ export const TwoColumnLayout = renderComponent(html<DialogStoryArgs>`
           <div>
             <fluent-text weight="semibold" block><p>Don't have an account? Sign up now!</p></fluent-text>
             <br />
-            <fluent-text-input type="email">
+            <kumo-text-input type="email">
               <fluent-label>Email</fluent-label>
-            </fluent-text-input>
+            </kumo-text-input>
             <br />
-            <fluent-text-input>
+            <kumo-text-input>
               <fluent-label>Username</fluent-label>
-            </fluent-text-input>
+            </kumo-text-input>
             <br />
-            <fluent-text-input type="password">
+            <kumo-text-input type="password">
               <fluent-label>Password</fluent-label>
-            </fluent-text-input>
+            </kumo-text-input>
             <br />
           </div>
         </div>
