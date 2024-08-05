@@ -33,7 +33,7 @@ export default {
   args: {
     label: 'Example',
     id: uniqueId('field-'),
-    storyContent: html`<fluent-text-input slot="input" id="${x => x.id}"></fluent-text-input>`,
+    storyContent: html`<kumo-text-input slot="input" id="${x => x.id}"></kumo-text-input>`,
     labelPosition: KumoLabelPosition.after,
   },
   argTypes: {
@@ -69,7 +69,7 @@ export const LabelPositions: Story<KumoField> = renderComponent(html<StoryArgs<K
       <div>
         <kumo-field label-position="${x => x.labelPosition}">
           <label slot="label" for="${x => x.id}">${x => x.label}</label>
-          <fluent-text-input slot="input" id="${x => x.id}"></fluent-text-input
+          <kumo-text-input slot="input" id="${x => x.id}"></kumo-text-input
         ></kumo-field>
       </div>
       <br />
@@ -89,14 +89,14 @@ LabelPositions.args = {
 export const Required: Story<KumoField> = renderComponent(storyTemplate).bind({});
 Required.args = {
   id: uniqueId('field-'),
-  storyContent: html`<fluent-text-input required slot="input" id="${x => x.id}"></fluent-text-input>`,
+  storyContent: html`<kumo-text-input required slot="input" id="${x => x.id}"></kumo-text-input>`,
   label: 'Required field',
 };
 
 export const DisabledControl: Story<KumoField> = renderComponent(storyTemplate).bind({});
 DisabledControl.args = {
   id: uniqueId('field-'),
-  storyContent: html`<fluent-text-input disabled slot="input" id="${x => x.id}"></fluent-text-input>`,
+  storyContent: html`<kumo-text-input disabled slot="input" id="${x => x.id}"></kumo-text-input>`,
   label: 'Disabled field',
 };
 
@@ -104,61 +104,61 @@ export const ValidationMessage: Story<KumoField> = renderComponent(html<StoryArg
   <form id="validation-messages-form" action="#" style="display:flex;flex-flow:column;align-items:start;gap:10px;">
     <kumo-field>
       <label slot="label" for="field-required">Required</label>
-      <fluent-text-input required slot="input" id="field-required"></fluent-text-input>
+      <kumo-text-input required slot="input" id="field-required"></kumo-text-input>
       <fluent-text slot="message" flag="value-missing" size="200" style="color: ${colorStatusDangerForeground1}">
         This field is required.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-pattern-mismatch">Unique ID</label>
-      <fluent-text-input
+      <kumo-text-input
         pattern="\\w+"
         slot="input"
         id="field-pattern-mismatch"
         value="Cool Username 123"
-      ></fluent-text-input>
+      ></kumo-text-input>
       <fluent-text slot="message" flag="pattern-mismatch" size="200" style="color: ${colorStatusDangerForeground1}">
         <span style="vertical-align: middle">Only letters and numbers please, spaces not allowed</span>
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-too-long">Too Long</label>
-      <fluent-text-input maxlength="5" value="123456789" slot="input" id="field-too-long"></fluent-text-input>
+      <kumo-text-input maxlength="5" value="123456789" slot="input" id="field-too-long"></kumo-text-input>
       <fluent-text slot="message" flag="too-long" size="200" style="color: ${colorStatusDangerForeground1}">
         This value is too long.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-too-short">Too Short</label>
-      <fluent-text-input minlength="5" value="123" slot="input" id="field-too-short"></fluent-text-input>
+      <kumo-text-input minlength="5" value="123" slot="input" id="field-too-short"></kumo-text-input>
       <fluent-text slot="message" flag="too-short" size="200" style="color: ${colorStatusDangerForeground1}">
         This value is too short.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-range-overflow">Range Overflow</label>
-      <fluent-text-input type="number" max="5" value="7" slot="input" id="field-range-overflow"></fluent-text-input>
+      <kumo-text-input type="number" max="5" value="7" slot="input" id="field-range-overflow"></kumo-text-input>
       <fluent-text slot="message" flag="range-overflow" size="200" style="color: ${colorStatusDangerForeground1}">
         This value must be less than 5.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-range-underflow">Range Underflow</label>
-      <fluent-text-input type="number" min="5" value="3" slot="input" id="field-range-underflow"></fluent-text-input>
+      <kumo-text-input type="number" min="5" value="3" slot="input" id="field-range-underflow"></kumo-text-input>
       <fluent-text slot="message" flag="range-underflow" size="200" style="color: ${colorStatusDangerForeground1}">
         This value must be greater than 5.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-step-mismatch">Step Mismatch</label>
-      <fluent-text-input type="number" step="5" value="0" slot="input" id="field-step-mismatch"></fluent-text-input>
+      <kumo-text-input type="number" step="5" value="0" slot="input" id="field-step-mismatch"></kumo-text-input>
       <fluent-text slot="message" flag="step-mismatch" size="200" style="color: ${colorStatusDangerForeground1}">
         This value must be a multiple of 5.
       </fluent-text>
     </kumo-field>
     <kumo-field>
       <label slot="label" for="field-type-mismatch">Type Mismatch</label>
-      <fluent-text-input value="not an email" type="email" slot="input" id="field-type-mismatch"></fluent-text-input>
+      <kumo-text-input value="not an email" type="email" slot="input" id="field-type-mismatch"></kumo-text-input>
       <fluent-text slot="message" flag="type-mismatch" size="200" style="color: ${colorStatusDangerForeground1}">
         This value is not a valid email address.
       </fluent-text>
@@ -198,7 +198,7 @@ export const ComponentExamples: Story<KumoField> = renderComponent(html`
   <div style="display: flex; flex-direction: column; gap: 10px;">
     <kumo-field label-position="before">
       <label slot="label" for="field-text">Text Input</label>
-      <fluent-text-input slot="input" id="field-text"></fluent-text-input>
+      <kumo-text-input slot="input" id="field-text"></kumo-text-input>
     </kumo-field>
     <kumo-field label-position="before" style="max-width: 400px">
       <label slot="label" for="field-slider">Slider</label>
