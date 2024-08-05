@@ -49,3 +49,4 @@ import './kumo/field/define.js';
 import './kumo/menu-button/define.js';
 import './kumo/radio/define.js';
 import './kumo/radio-group/define.js';
+import './kumo/text-input/define.js';
