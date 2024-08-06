@@ -53,4 +53,5 @@ import './kumo/radio/define.js';
 import './kumo/radio-group/define.js';
 import './kumo/tab/define.js';
 import './kumo/tablist/define.js';
+import './kumo/spinner/define.js';
 import './kumo/text-input/define.js';
