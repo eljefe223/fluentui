@@ -7,7 +7,7 @@ import { styles } from '../../tab/tab.styles.js';
  *
  * @public
  * @remarks
- * HTML Element: `<kumo-tablist>`
+ * HTML Element: `<kumo-tab>`
  */
 export const definition = Tab.compose({
   name: `kumo-tab`,
