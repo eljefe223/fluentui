@@ -1,5 +1,5 @@
 import { template } from '../../tablist/tablist.template.js';
-import { KumoTablist } from './tablist.js';
+import { BaseTablist as KumoTablist } from '../../tablist/tablist.js';
 import { styles } from './tablist.styles.js';
 
 /**

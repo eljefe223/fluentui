@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import { TablistOrientation } from '../../tablist/tablist.options.js';
-import type { KumoTablist } from './tablist.js';
+import type { BaseTablist as KumoTablist } from '../../tablist/tablist.js';
 
 type TablistStoryArgs = Args & KumoTablist;
 type TablistStoryMeta = Meta<TablistStoryArgs>;
