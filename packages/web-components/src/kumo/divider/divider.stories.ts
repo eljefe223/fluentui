@@ -3,6 +3,7 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../../helpers.stories.js';
 import type { BaseDivider as KumoDivider } from '../../divider/divider.js';
 import { DividerOrientation, DividerRole } from '../../divider/divider.options.js';
+import { KumoDividerAppearance } from './divider.options.js';
 
 type DividerStoryArgs = Args & KumoDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
@@ -49,7 +50,10 @@ export default {
   title: 'Components/Kumo/Divider',
   args: {
     content: 'Section One',
+    appearance: undefined,
+    inset: false,
     orientation: undefined,
+    role: undefined,
   },
   argTypes: {
     content: {
@@ -59,6 +63,34 @@ export default {
           summary: 'empty',
         },
       },
+    },
+    appearance: {
+      description: 'Divider and text colors',
+      table: {
+        type: {
+          summary: 'Fluent v9. A divider can have one of the preset appearances.',
+        },
+        defaultValue: {
+          summary: 'default',
+        },
+      },
+      options: Object.values(KumoDividerAppearance).sort(),
+      control: {
+        type: 'select',
+      },
+    },
+    inset: {
+      description: 'Pad the ends of divider',
+      table: {
+        type: {
+          summary:
+            'Type: boolean. Fluent v9. Divider layout is block for strict distinctions between items, or inset for closer relationships with neighboring content.',
+        },
+        defaultValue: {
+          summary: false,
+        },
+      },
+      control: 'boolean',
     },
     role: {
       description: 'Set role attribute',
@@ -83,7 +115,7 @@ export default {
             'Inherited from FASTDivider. Layout can be horizontal or vertical. Adds aria-orientation to component.',
         },
         defaultValue: {
-          summary: undefined,
+          summary: 'horizontal',
         },
       },
       options: Object.values(DividerOrientation),
@@ -104,6 +136,21 @@ export const Content = renderComponent(html<DividerStoryArgs>`
   <kumo-divider align-content="center">
     <em>Wrap your content in an element to render</em>
   </kumo-divider>
+`);
+
+export const Appearance = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider appearance="default"><div>default</div></fluent-divider>
+    <fluent-divider appearance="strong"><div>strong</div></fluent-divider>
+    <fluent-divider appearance="subtle"><div>subtle</div></fluent-divider>
+  </div>
+`);
+
+export const Inset = renderComponent(html<DividerStoryArgs>`
+  <div>
+    <fluent-divider inset><div>I'm inset from the edges</div></fluent-divider>
+    <fluent-divider><div>Default</div></fluent-divider>
+  </div>
 `);
 
 export const Role = renderComponent(html<DividerStoryArgs>`

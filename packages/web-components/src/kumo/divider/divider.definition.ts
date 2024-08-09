@@ -1,5 +1,5 @@
-import { BaseDivider } from '../../divider/divider.js';
 import { template } from '../../divider/divider.template.js';
+import { KumoDivider } from './divider.js';
 import { styles } from './divider.styles.js';
 
 /**
@@ -9,7 +9,7 @@ import { styles } from './divider.styles.js';
  * @remarks
  * HTML Element: `<kumo-divider>`
  */
-export const definition = BaseDivider.compose({
+export const definition = KumoDivider.compose({
   name: `kumo-divider`,
   template,
   styles,

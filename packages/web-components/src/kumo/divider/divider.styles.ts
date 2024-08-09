@@ -1,14 +1,18 @@
 import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '../../utils/index.js';
 import {
+  colorNeutralForeground1,
   colorNeutralForeground2,
+  colorNeutralForeground3,
+  colorNeutralStroke1,
   colorNeutralStroke2,
+  colorNeutralStroke3,
   fontFamilyBase,
   fontSizeBase200,
   fontWeightRegular,
   strokeWidthThin,
 } from '../../theme/design-tokens.js';
-import { alignEndState, alignStartState, insetState, verticalState } from '../../styles/states/index.js';
+import { insetState, strongState, subtleState, verticalState } from '../../styles/states/index.js';
 
 /** Divider styles
  * @public
@@ -85,14 +89,26 @@ export const styles = css`
     line-height: 20px;
   }
 
-  :host(${verticalState}${alignStartState})::before {
-    min-height: 8px;
+  :host(${strongState})::before,
+  :host(${strongState})::after {
+    background: ${colorNeutralStroke1};
   }
-  :host(${verticalState}${alignEndState})::after {
-    min-height: 8px;
+  :host(${strongState}) ::slotted(*) {
+    color: ${colorNeutralForeground1};
+  }
+  :host(${subtleState})::before,
+  :host(${subtleState})::after {
+    background: ${colorNeutralStroke3};
+  }
+  :host(${subtleState}) ::slotted(*) {
+    color: ${colorNeutralForeground3};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
+    :host(${strongState})::before,
+    :host(${strongState})::after,
+    :host(${subtleState})::before,
+    :host(${subtleState})::after,
     :host::after,
     :host::before {
       background: WindowText;
