@@ -3,7 +3,7 @@ import { template } from '../../menu-list/menu-list.template.js';
 import { styles } from '../../menu-list/menu-list.styles.js';
 
 /**
- * The definition for the Kumo Rating Display component.
+ * The definition for the Kumo Menu List component.
  *
  * @public
  * @remarks
