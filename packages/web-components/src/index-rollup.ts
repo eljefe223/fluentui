@@ -47,6 +47,7 @@ import './kumo/checkbox/define.js';
 import './kumo/dialog/define.js';
 import './kumo/dialog-body/define.js';
 import './kumo/field/define.js';
+import './kumo/link/define.js';
 import './kumo/menu/define.js';
 import './kumo/menu-button/define.js';
 import './kumo/menu-item/define.js';
