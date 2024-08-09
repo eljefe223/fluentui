@@ -1,7 +1,7 @@
 import type { ValuesOf } from '../../utils/index.js';
 
 /**
- * DividerAppearance - divider color defined by a design token alias.
+ * KumoDividerAppearance - divider color defined by a design token alias.
  * @public
  */
 export const KumoDividerAppearance = {
